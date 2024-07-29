@@ -6,9 +6,22 @@ const App = () => {
 
   const addValue = () => {
     if (counter < 20) {
-      setCounter(counter + 1);
+      // Check if counter is less than 20
+      // Original Approach - This will not work as intended due to state batching
+      /*
+      setCounter(counter + 1); // Update state to counter + 1
+      setCounter(counter + 1); // This will not work as expected due to batching
+      setCounter(counter + 1); // This will not work as expected due to batching
+      setCounter(counter + 1); // This will not work as expected due to batching
+      */
+
+      // Solution - Use functional update to handle state batching
+      setCounter((prevCounter) => prevCounter + 1); // Increment by 1 using functional update
+      setCounter((prevCounter) => prevCounter + 1); // Increment by 1 using functional update
+      setCounter((prevCounter) => prevCounter + 1); // Increment by 1 using functional update
+      setCounter((prevCounter) => prevCounter + 1); // Increment by 1 using functional update
     } else {
-      alert("Above 20 value is not allowed");
+      alert("Above 20 value is not allowed"); // Alert if counter is 20 or more
     }
   };
 
