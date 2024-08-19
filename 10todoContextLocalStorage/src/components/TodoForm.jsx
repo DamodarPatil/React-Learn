@@ -2,27 +2,27 @@ import { useState } from "react";
 import { useTodo } from "../contexts/TodoContext";
 
 const TodoForm = () => {
-  const [todo, setTodo] = useState("");
+  const [todoText, setTodoText] = useState("");
 
-  const { addTodo } = useTodo();
+  const { addTodoItem } = useTodo();
 
-  const add = (e) => {
+  const handleAddTodo = (e) => {
     e.preventDefault();
 
-    if (!todo) return;
+    if (!todoText) return;
 
-    addTodo({ todo, completed: false });
-    setTodo("");
+    addTodoItem({ text: todoText, isCompleted: false });
+    setTodoText("");
   };
 
   return (
-    <form onSubmit={add} className="flex">
+    <form onSubmit={handleAddTodo} className="flex">
       <input
         type="text"
         placeholder="Write Todo..."
         className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        value={todoText}
+        onChange={(e) => setTodoText(e.target.value)}
       />
       <button
         type="submit"
