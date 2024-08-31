@@ -1,8 +1,13 @@
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 
 const App = () => {
   return (
-    <div>App</div>
+    <>
+    <AddTodo/>
+    <Todos/>
+    </>
   )
-}
+};
 
-export default App
+export default App;
